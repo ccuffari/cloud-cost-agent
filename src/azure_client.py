@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 AZURE_SUBSCRIPTION_ID = "9154481d-de4a-4a89-a60d-b0d000740638"
 AZURE_TENANT_ID = "43d04a32-4ce3-492a-9d6e-ba61b3e6882d"
 AZURE_CLIENT_ID = "91453230-ac69-4ea4-93f0-d611299db661"
-AZURE_CLIENT_SECRET = "tU-8Q~m6tlluPh_Qv7PcLb-rIItiGvxHZqF2vaaY"
+AZURE_CLIENT_SECRET = "zTW8Q~4z_zk6Nc0XD81Xg6vUHSlXTuoHOpIy6dn7"
 
 def get_credential():
     return ClientSecretCredential(AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET)
