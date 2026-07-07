@@ -5,8 +5,8 @@ from src.azure_client import get_all_resources_with_metrics, get_vm_metrics, get
 
 logger = logging.getLogger(__name__)
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+SUPABASE_URL = "https://ksxqnrxphizxrtloqlcd.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzeHFucnhwaGl6eHJ0bG9xbGNkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MzQxMDcxNSwiZXhwIjoyMDk4OTg2NzE1fQ.OeL_Ao9tTXKgC6IR5Ber1Wj_slVsNz89toEjETE6Mwo"
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def aggregate_and_save():
