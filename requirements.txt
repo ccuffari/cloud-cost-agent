@@ -1,0 +1,11 @@
+openai
+python-dotenv
+supabase
+azure-identity
+azure-mgmt-resourcegraph
+azure-mgmt-costmanagement
+azure-mgmt-compute
+azure-mgmt-monitor
+google-api-python-client
+google-auth-oauthlib
+pyjwt
