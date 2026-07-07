@@ -2,6 +2,7 @@ import os
 import logging
 from supabase import create_client
 from src.azure_client import get_all_resources_with_metrics, get_vm_metrics, get_monthly_cost
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +32,7 @@ def aggregate_and_save():
             metrics = get_vm_metrics(resource_id, resource_name)
             monthly_cost = get_monthly_cost(resource_id)
         
-        # Salva su Supabase (tabella azure_inventory)
+        # Salva su Supabase
         data = {
             "resource_id": resource_id,
             "resource_name": resource_name,
