@@ -1,28 +1,25 @@
 import os
 import logging
+import random
 from azure.identity import ClientSecretCredential
 from azure.mgmt.resourcegraph import ResourceGraphClient
 from azure.mgmt.resourcegraph.models import QueryRequest, QueryRequestOptions
-from azure.mgmt.costmanagement import CostManagementClient
-from azure.mgmt.costmanagement.models import QueryDefinition, QueryDataset, QueryAggregation, QueryTimePeriod
-from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 
-# Carica credenziali
-tenant_id = os.getenv("AZURE_TENANT_ID")
-client_id = os.getenv("AZURE_CLIENT_ID")
-client_secret = os.getenv("AZURE_CLIENT_SECRET")
-subscription_id = os.getenv("AZURE_SUBSCRIPTION_ID")
+# ============================================================
+# CREDENZIALI AZURE (HARDCODED PER TEST)
+# ============================================================
+AZURE_SUBSCRIPTION_ID = "9154481d-de4a-4a89-a60d-b0d000740638"
+AZURE_TENANT_ID = "43d04a32-4ce3-492a-9d6e-ba61b3e6882d"
+AZURE_CLIENT_ID = "91453230-ac69-4ea4-93f0-d611299db661"
+AZURE_CLIENT_SECRET = "tU-8Q~m6tlluPh_Qv7PcLb-rIItiGvxHZqF2vaaY"
 
 def get_credential():
-    return ClientSecretCredential(tenant_id, client_id, client_secret)
+    return ClientSecretCredential(AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET)
 
 def get_resource_graph_client():
     return ResourceGraphClient(get_credential())
-
-def get_cost_client():
-    return CostManagementClient(get_credential())
 
 def query_azure_resource_graph(query: str):
     """Esegue una query su Azure Resource Graph."""
@@ -63,19 +60,12 @@ def get_all_resources_with_metrics():
     return resources
 
 def get_vm_metrics(vm_id: str, vm_name: str):
-    """Recupera CPU e RAM media per una VM (ultimi 7 giorni)."""
-    # Implementazione semplificata: in produzione usi MonitorManagementClient
-    # Per ora restituiamo valori fittizi (ma reali in produzione)
-    # Simula CPU media tra 5% e 80%
-    import random
+    """Recupera CPU e RAM media per una VM (simulato per test)."""
     return {
         "cpu_avg": random.uniform(5, 80),
         "memory_avg": random.uniform(10, 90)
     }
 
 def get_monthly_cost(resource_id: str):
-    """Recupera il costo mensile di una risorsa (ultimi 30 giorni)."""
-    # In produzione usi CostManagementClient
-    # Per test simuliamo un costo mensile
-    import random
+    """Recupera il costo mensile di una risorsa (simulato per test)."""
     return round(random.uniform(10, 500), 2)
